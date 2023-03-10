@@ -36,14 +36,12 @@ def on_ui_tabs():
                     stop_button = gr.Button(value="Stop")
 
             with gr.Column():
-                canvas_width = opts.threeDmodel_canvas_width + "px"
-                canvas_height = opts.threeDmodel_canvas_height + "px"
+                canvas_width = f"{opts.threeDmodel_canvas_width}px"
+                canvas_height = f"{opts.threeDmodel_canvas_height}px"
 
-                gr.HTML('<div id="WebGL-output" canvas_width="' + opts.threeDmodel_canvas_width +
-                        '" canvas_height="' + opts.threeDmodel_canvas_height + '" canvas_bg_color="' +
-                        opts.threeDmodel_bg_color + '" has_ground="' + str(opts.threeDmodel_has_ground) + '" has_axis="' +
-                        str(opts.threeDmodel_has_axis) + '" style="width: ' +
-                        canvas_width + '; height: ' + canvas_height + '; border-radius: 0.25rem; border: 0.5px solid"></div>')
+                gr.HTML(
+                    f'<div id="WebGL-output" canvas_width="{opts.threeDmodel_canvas_width}" canvas_height="{opts.threeDmodel_canvas_height}" canvas_bg_color="{opts.threeDmodel_bg_color}" has_ground="{str(opts.threeDmodel_has_ground)}" has_axis="{str(opts.threeDmodel_has_axis)}" style="width: {canvas_width}; height: {canvas_height}; border-radius: 0.25rem; border: 0.5px solid"></div>'
+                )
 
         play_pause_button.click(None, [], None, _js="playAndPause")
         stop_button.click(None, [], None, _js="stop")
